@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A lower bound for the Furstenberg–Sárközy problem</title>
+<meta name="description" content="liminf log D(N)/log N &gt;= 0.753741541837329405..., via a composite even-digit lift of square-DAGs on square-free moduli.">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #fdfdfb;
+  --fg: #1a1a1a;
+  --muted: #4a4a4a;
+  --rule: #c8c4bb;
+  --block-bg: #f4f2ec;
+  --block-edge: #a9a294;
+  --math-bg: #f7f6f1;
+  --link: #0b4f8a;
+  --link-visited: #5a3a8a;
+  --table-head: #eeece5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181b;
+    --fg: #e6e4df;
+    --muted: #b3b0a8;
+    --rule: #3b3f45;
+    --block-bg: #1e2126;
+    --block-edge: #4d535b;
+    --math-bg: #1b1e22;
+    --link: #7db4ea;
+    --link-visited: #b79ce0;
+    --table-head: #22262b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+main {
+  max-width: 66ch;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+  font-weight: normal;
+}
+h1 {
+  font-size: 1.75rem;
+  margin: 0 0 1.5rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+}
+h2 {
+  font-size: 1.3rem;
+  margin: 2.5rem 0 .75rem;
+  padding-bottom: .25rem;
+  border-bottom: 1px solid var(--rule);
+}
+h3 {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 1.75rem 0 .5rem;
+}
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+var { font-style: italic; }
+sub, sup { font-size: .72em; line-height: 0; }
+code {
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: .9em;
+  background: var(--math-bg);
+  padding: 0 .2em;
+}
+
+.lead { margin-bottom: 1.25rem; }
+
+/* Framed statement blocks */
+.thm, .proof, .remark {
+  margin: 1.25rem 0;
+  padding: .85rem 1rem;
+  background: var(--block-bg);
+  border: 1px solid var(--block-edge);
+  border-radius: 2px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.proof {
+  background: transparent;
+  border: 0;
+  border-left: 2px solid var(--block-edge);
+  border-radius: 0;
+  padding: .25rem 0 .25rem 1rem;
+}
+.remark { background: transparent; }
+.thm > :last-child, .proof > :last-child, .remark > :last-child { margin-bottom: 0; }
+
+.label { font-variant: small-caps; letter-spacing: .03em; font-weight: bold; }
+.proof .lead-in { font-style: italic; }
+.step { font-style: italic; }
+.qed { font-style: normal; }
+
+/* Displayed mathematics */
+.math {
+  margin: 1.1rem 0;
+  padding: .6rem .9rem;
+  background: var(--math-bg);
+  border-left: 3px solid var(--rule);
+  overflow-x: auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.math .l { display: block; white-space: nowrap; }
+.math .l.gap { margin-top: 1.05em; }
+.math .i1 { padding-left: 2.5em; }
+.math .i2 { padding-left: 5em; }
+.math .note { white-space: normal; font-style: italic; color: var(--muted); }
+
+/* Data listings */
+.data {
+  margin: 1rem 0;
+  padding: .6rem .9rem;
+  background: var(--math-bg);
+  border-left: 3px solid var(--rule);
+  overflow-x: auto;
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: .92em;
+  line-height: 1.7;
+}
+
+/* Tables */
+.tablewrap {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  border: 1px solid var(--rule);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .95rem;
+}
+caption {
+  caption-side: top;
+  text-align: left;
+  padding: .5rem .6rem;
+  font-style: italic;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+}
+th, td {
+  padding: .35rem .6rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+thead th { background: var(--table-head); }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+
+/* Definition list */
+dl.defs { margin: 1rem 0; }
+dl.defs > dt { font-weight: bold; margin-top: 1rem; }
+dl.defs > dd { margin: .25rem 0 0; padding: 0; }
+
+ol.routes > li { margin-bottom: .85rem; }
+ul.refs { list-style: none; padding: 0; }
+ul.refs > li {
+  margin: 0 0 .65rem;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+footer {
+  max-width: 66ch;
+  margin: 3rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+@media print {
+  :root {
+    --bg: #fff;
+    --fg: #000;
+    --muted: #333;
+    --rule: #999;
+    --block-bg: #fff;
+    --block-edge: #666;
+    --math-bg: #fff;
+    --table-head: #fff;
+    --link: #000;
+    --link-visited: #000;
+  }
+  body { font-size: 11pt; padding: 0; overflow-x: visible; }
+  main, footer { max-width: none; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; }
+  .math, .data, .tablewrap { overflow-x: visible; }
+  .math .l { white-space: normal; }
+  th, td { white-space: normal; }
+  a { text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<h1>A lower bound for the Furstenberg–Sárközy problem</h1>
+
+<p class="lead">Let <var>D</var>(<var>N</var>) be the largest size of a subset of {1,…,<var>N</var>} no two of whose elements differ by a nonzero perfect square. This note proves</p>
+
+<div class="thm">
+  <p><span class="label">Theorem.</span> liminf<sub><var>N</var>→∞</sub> log <var>D</var>(<var>N</var>) / log <var>N</var> ≥ α<sub>∞</sub>, where</p>
+  <div class="math"><span class="l">α<sub>∞</sub> = 0.753741541837329405…&nbsp;&nbsp;(nearest IEEE double: 0.7537415418373294)</span></div>
+  <p>is the value of an explicit closed-form optimization over an eleven-block pool: nine Paley chains and two square-DAG certificates on the composite moduli 235 and 299, lifted by Lemma A below, glued by Krachun's Lemma 5, and converted into integer sets by his Lemma 4.</p>
+</div>
+
+<p>Equivalently, in pointwise form: for every ε &gt; 0 there is an <var>N</var><sub>0</sub>(ε) with <var>D</var>(<var>N</var>) ≥ <var>N</var><sup>α<sub>∞</sub>−ε</sup> for all <var>N</var> ≥ <var>N</var><sub>0</sub>(ε). The statement is a liminf: the argument supplies no constant <var>c</var> with <var>D</var>(<var>N</var>) ≥ <var>c</var>·<var>N</var><sup>α<sub>∞</sub></sup> for all <var>N</var>, and no such claim is made here.</p>
+
+<p>The previous record is Krachun's α<sub>★</sub> = 0.752796455874514… (arXiv:2608.01325), the first bound past 3/4. Only one lemma is new: the lift of a square-DAG on a square-free composite modulus (Lemma A). Krachun's Lemmas 4 and 5 are used exactly as published.</p>
+
+<div class="thm">
+  <p><span class="label">Corollary.</span> For prime <var>q</var>, let IM(2,<var>q</var>) be the largest induced matching in the point–line incidence graph of <var>F</var><sub><var>q</var></sub><sup>2</sup>. Then for every ε &gt; 0, IM(2,<var>q</var>) ≫<sub>ε</sub> <var>q</var><sup>1/2 + α<sub>∞</sub> − ε</sup>. This follows from Hunter–Pohoata–Verstraëte–Zhang, Prop. 2.3: a square-difference-free <var>A</var> ⊆ {1,…,⌊<var>q</var>/10⌋} yields an induced point–line matching in <var>F</var><sub><var>q</var></sub><sup>2</sup> of size Ω(√<var>q</var>·|<var>A</var>|); the implication is a black box in <var>A</var>. Prime <var>q</var> only; the statement is not made for prime powers.</p>
+</div>
+
+<section aria-labelledby="h-context">
+<h2 id="h-context">Context</h2>
+
+<div class="tablewrap">
+<table>
+  <caption>Successive lower-bound exponents.</caption>
+  <thead>
+    <tr><th scope="col">Year</th><th scope="col">Source</th><th scope="col">Exponent</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">1984</th><td>Ruzsa</td><td>0.733077</td></tr>
+    <tr><th scope="row">2008, 2015</th><td>Beigel–Gasarch; Lewko (independently)</td><td>0.733412</td></tr>
+    <tr><th scope="row">2026</th><td>Krachun</td><td>0.752796…</td></tr>
+    <tr><th scope="row">2026</th><td>this repository</td><td>0.753741…</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The classical constructions are the height-1 case — a support with no square difference at all, no ranks, used as alternating digits — with exponent ½(1 + log <var>t</var> / log <var>m</var>). The record for that quantity is ½(1 + log 12 / log 205) = 0.733412, from <var>m</var> = 205, <var>t</var> = 12. For prime <var>m</var> the height-1 exponent never exceeds 3/4: a square-difference-free support mod <var>p</var> is an independent set in the Paley graph, of size at most √<var>p</var> when <var>p</var> ≡ 1 (mod 4), and is a single point when <var>p</var> ≡ 3 (mod 4) or <var>p</var> = 2. Krachun crossed 3/4 by making height, rather than width, the quantity that pays for itself in the CRT glue. This note keeps his glue and widens the supply of blocks: square-DAGs on square-free composite moduli, where height can be strictly smaller than width (11 &lt; 17 and 12 &lt; 19 for the two certificates below).</p>
+
+<p>For the size of the remaining gap, the best upper bound is Green–Sawhney, <var>D</var>(<var>N</var>) ≪ <var>N</var>·<var>e</var><sup>−<var>c</var>√(log <var>N</var>)</sup>.</p>
+</section>
+
+<section aria-labelledby="h-defs">
+<h2 id="h-defs">Definitions</h2>
+
+<dl class="defs">
+
+<dt><var>D</var>(<var>N</var>).</dt>
+<dd><p>The largest |<var>A</var>| over <var>A</var> ⊆ {1,…,<var>N</var>} with no two elements differing by a nonzero perfect square. Such an <var>A</var> is called <em>square-difference-free</em> (SDF).</p></dd>
+
+<dt>The arc set.</dt>
+<dd>
+  <p>For <var>m</var> ≥ 2,</p>
+  <div class="math"><span class="l"><var>Q</var><sub><var>m</var></sub> := {<var>z</var><sup>2</sup> mod <var>m</var> : <var>z</var> ∈ Z} ∖ {0},</span></div>
+  <p>the full image of squaring modulo <var>m</var> with 0 removed. For square-free <var>m</var>, by CRT, <var>d</var> ∈ <var>Q</var><sub><var>m</var></sub> ∪ {0} if and only if <var>d</var> mod <var>q</var> is a square (possibly 0) in <var>F</var><sub><var>q</var></sub> for every prime <var>q</var> | <var>m</var>. Elements of <var>Q</var><sub><var>m</var></sub> may be <strong>non-units</strong> — zero in some CRT coordinates but not all. This is part of the definition, not an implementation choice: Remark 1 below exhibits a counterexample showing that the unit-only variant makes Lemma A false. Sizes: |<var>Q</var><sub>235</sub>| = 71, |<var>Q</var><sub>299</sub>| = 83.</p>
+</dd>
+
+<dt>Square-DAG.</dt>
+<dd><p><var>S</var> ⊆ Z/<var>m</var>Z such that the digraph on <var>S</var> with arcs <var>x</var> → <var>y</var> whenever <var>y</var> − <var>x</var> ∈ <var>Q</var><sub><var>m</var></sub> is acyclic. Acyclicity forces antisymmetry, since a two-way pair is a 2-cycle; no hypothesis on −1 being a nonresidue is needed.</p></dd>
+
+<dt>Ranking.</dt>
+<dd><p>A map <var>h</var>₀ : <var>S</var> → {0,…,<var>H</var>₀−1} with <var>h</var>₀(<var>x</var>) &gt; <var>h</var>₀(<var>y</var>) for every arc <var>x</var> → <var>y</var>; call <var>H</var>₀ the height of the ranking. The reversed longest-path rank is such a map, and it realizes the minimum <var>H</var>₀ over all rankings; that minimum value is the height of the DAG (the number of layers, equivalently the longest directed path counted in vertices).</p></dd>
+
+<dt>Ranked block.</dt>
+<dd><p>A triple (<var>C</var>, <var>h</var>, <var>H</var>) with <var>C</var> ⊆ Z/<var>P</var>Z and <var>h</var> : <var>C</var> → {0,…,<var>H</var>−1} strictly decreasing along every nonzero square difference mod <var>P</var>: if <var>x</var> ≠ <var>y</var> in <var>C</var> and <var>y</var> − <var>x</var> is a square mod <var>P</var>, then <var>h</var>(<var>x</var>) &gt; <var>h</var>(<var>y</var>).</p></dd>
+
+<dt>Paley chain (Krachun, Def. 2).</dt>
+<dd><p>For a prime <var>p</var> ≡ 3 (mod 4), a tuple (<var>s</var>₀,…,<var>s</var><sub><var>t</var>−1</sub>) in <var>F</var><sub><var>p</var></sub> with <var>s</var><sub><var>b</var></sub> − <var>s</var><sub><var>a</var></sub> a nonzero quadratic residue for all <var>a</var> &lt; <var>b</var>. A Paley chain is a square-DAG whose digraph is a transitive tournament, so its height equals its length <var>t</var>.</p></dd>
+
+<dt>Valuations.</dt>
+<dd><p>For a nonzero integer <var>d</var>, <var>v</var><sub><var>m</var></sub>(<var>d</var>) := max{<var>j</var> : <var>m</var><sup><var>j</var></sup> | <var>d</var>}; for square-free <var>m</var> = <var>q</var><sub>1</sub>⋯<var>q</var><sub><var>k</var></sub> this equals min<sub><var>l</var></sub> <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>). For a nonzero class <var>d</var> in Z/<var>m</var><sup>2<var>e</var></sup>Z, <var>v</var><sub><var>m</var></sub>(<var>d</var>) is well defined and &lt; 2<var>e</var>, computed on any representative.</p></dd>
+
+</dl>
+</section>
+
+<section aria-labelledby="h-lemA">
+<h2 id="h-lemA">Lemma A (composite even-digit lift) — the one new lemma</h2>
+
+<div class="thm">
+  <p><span class="label">Statement.</span> Let <var>m</var> ≥ 2 be square-free, let <var>S</var> be a square-DAG on Z/<var>m</var>Z with ranking <var>h</var>₀ of height <var>H</var>₀ and |<var>S</var>| = <var>t</var>, and let <var>e</var> ≥ 1. Put</p>
+  <div class="math">
+    <span class="l"><var>C</var>(<var>m</var>,<var>S</var>,<var>e</var>) := { <var>x</var> = Σ<sub><var>j</var>=0</sub><sup>2<var>e</var>−1</sup> <var>x</var><sub><var>j</var></sub> <var>m</var><sup><var>j</var></sup> : 0 ≤ <var>x</var><sub><var>j</var></sub> &lt; <var>m</var>, <var>x</var><sub>2<var>j</var></sub> ∈ <var>S</var> for 0 ≤ <var>j</var> ≤ <var>e</var>−1 }</span>
+    <span class="l i1">⊆ Z/<var>m</var><sup>2<var>e</var></sup>Z,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<var>C</var>(<var>m</var>,<var>S</var>,<var>e</var>)| = (<var>mt</var>)<sup><var>e</var></sup>,</span>
+    <span class="l gap"><var>h</var>(<var>x</var>) := Σ<sub><var>j</var>=0</sub><sup><var>e</var>−1</sup> <var>h</var>₀(<var>x</var><sub>2<var>j</var></sub>) · <var>H</var>₀<sup><var>e</var>−1−<var>j</var></sup>&nbsp;&nbsp;∈ {0,…,<var>H</var>₀<sup><var>e</var></sup> − 1}.</span>
+  </div>
+  <p>Then for all <var>x</var> ≠ <var>y</var> in <var>C</var> with <var>y</var> − <var>x</var> ≡ <var>z</var><sup>2</sup> (mod <var>m</var><sup>2<var>e</var></sup>) for some integer <var>z</var> and <var>y</var> − <var>x</var> ≠ 0, one has <var>h</var>(<var>x</var>) &gt; <var>h</var>(<var>y</var>). That is, (<var>C</var>, <var>h</var>, <var>H</var>₀<sup><var>e</var></sup>) is a ranked block on Z/<var>m</var><sup>2<var>e</var></sup>Z of size (<var>mt</var>)<sup><var>e</var></sup>.</p>
+</div>
+
+<div class="proof">
+<p><span class="lead-in">Proof.</span></p>
+
+<p><span class="step">Step 0 (setup).</span> Let <var>x</var> ≠ <var>y</var> in <var>C</var> and let <var>d</var> := (<var>y</var> − <var>x</var>) mod <var>m</var><sup>2<var>e</var></sup> satisfy <var>d</var> ≡ <var>z</var><sup>2</sup> (mod <var>m</var><sup>2<var>e</var></sup>) with <var>d</var> ≠ 0. Let <var>r</var> be the least base-<var>m</var> position at which the digit strings of <var>x</var> and <var>y</var> differ. Both are strings of 2<var>e</var> digits, so <var>r</var> ≤ 2<var>e</var>−1 automatically. As integers, <var>y</var> − <var>x</var> = Σ<sub><var>l</var> ≥ <var>r</var></sub> (<var>y</var><sub><var>l</var></sub> − <var>x</var><sub><var>l</var></sub>) <var>m</var><sup><var>l</var></sup> with <var>y</var><sub><var>r</var></sub> ≠ <var>x</var><sub><var>r</var></sub>, so <var>m</var><sup><var>r</var></sup> | (<var>y</var> − <var>x</var>) and <var>m</var><sup><var>r</var>+1</sup> ∤ (<var>y</var> − <var>x</var>); the same holds for <var>d</var> = (<var>y</var> − <var>x</var>) + κ<var>m</var><sup>2<var>e</var></sup> with κ ∈ {0,1}, since <var>r</var> + 1 ≤ 2<var>e</var> gives <var>m</var><sup><var>r</var>+1</sup> | <var>m</var><sup>2<var>e</var></sup>. Hence <var>m</var><sup><var>r</var></sup> | <var>d</var>, <var>m</var><sup><var>r</var>+1</sup> ∤ <var>d</var>, that is <var>r</var> = <var>v</var><sub><var>m</var></sub>(<var>d</var>). Step 2 sharpens this to <var>r</var> even and <var>r</var> ≤ 2<var>e</var>−2.</p>
+
+<p><span class="step">Step 1 (leading digit, no borrows).</span> Every term with <var>l</var> &gt; <var>r</var> contributes a multiple of <var>m</var> to (<var>y</var> − <var>x</var>)/<var>m</var><sup><var>r</var></sup>, so (<var>y</var> − <var>x</var>)/<var>m</var><sup><var>r</var></sup> ≡ <var>y</var><sub><var>r</var></sub> − <var>x</var><sub><var>r</var></sub> (mod <var>m</var>); and <var>d</var>/<var>m</var><sup><var>r</var></sup> ≡ (<var>y</var> − <var>x</var>)/<var>m</var><sup><var>r</var></sup> (mod <var>m</var><sup>2<var>e</var>−<var>r</var></sup>) because κ<var>m</var><sup>2<var>e</var></sup>/<var>m</var><sup><var>r</var></sup> ≡ 0. The leading digit is therefore</p>
+<div class="math"><span class="l">δ := (<var>d</var>/<var>m</var><sup><var>r</var></sup>) mod <var>m</var> ≡ <var>y</var><sub><var>r</var></sub> − <var>x</var><sub><var>r</var></sub> (mod <var>m</var>),&nbsp;&nbsp;&nbsp;δ ≠ 0.</span></div>
+
+<p><span class="step">Step 2 (the valuation of a nonzero square residue is even, and <var>r</var> ≤ 2<var>e</var>−2).</span> Fix a prime <var>q</var><sub><var>l</var></sub> | <var>m</var> and set <var>v</var><sub><var>l</var></sub> := <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>z</var>). Write <var>d</var> = <var>z</var><sup>2</sup> + λ<var>m</var><sup>2<var>e</var></sup> for an integer λ. Then:</p>
+<ul>
+  <li>if 2<var>v</var><sub><var>l</var></sub> &lt; 2<var>e</var>, then <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>z</var><sup>2</sup>) = 2<var>v</var><sub><var>l</var></sub> &lt; 2<var>e</var> ≤ <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(λ<var>m</var><sup>2<var>e</var></sup>), so <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>) = 2<var>v</var><sub><var>l</var></sub>, which is <strong>even</strong>; call such a coordinate <em>uncapped</em>;</li>
+  <li>if 2<var>v</var><sub><var>l</var></sub> ≥ 2<var>e</var>, then <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>) ≥ 2<var>e</var> and no parity information is available; call such a coordinate <em>capped</em>.</li>
+</ul>
+<p>Since <var>d</var> ≠ 0 in Z/<var>m</var><sup>2<var>e</var></sup>Z, not every coordinate can have <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>) ≥ 2<var>e</var>, so at least one coordinate is uncapped, and</p>
+<div class="math"><span class="l"><var>r</var> = <var>v</var><sub><var>m</var></sub>(<var>d</var>) = min<sub><var>l</var></sub> <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>) = min over uncapped <var>l</var> of 2<var>v</var><sub><var>l</var></sub>,</span></div>
+<p>a minimum of even numbers: the capped coordinates all have <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>) ≥ 2<var>e</var> and cannot achieve the minimum, which is &lt; 2<var>e</var>. Hence <var>r</var> = 2<var>j</var> is even with 0 ≤ <var>j</var> ≤ <var>e</var>−1.</p>
+
+<p>Square-freeness is essential here. For <var>m</var> = Π <var>q</var><sub><var>l</var></sub><sup><var>a</var><sub><var>l</var></sub></sup> with a repeated prime factor, <var>v</var><sub><var>m</var></sub>(<var>d</var>) = min<sub><var>l</var></sub> ⌊<var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>)/<var>a</var><sub><var>l</var></sub>⌋ and evenness fails: take <var>m</var> = 9 and <var>d</var> = 9 = 3<sup>2</sup>, where <var>v</var><sub>9</sub>(<var>d</var>) = 1 is odd.</p>
+
+<p><span class="step">Step 3 (global divisibility <var>m</var><sup><var>j</var></sup> | <var>z</var>).</span> Every coordinate satisfies <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>z</var><sup>2</sup>) ≥ 2<var>j</var>. For uncapped <var>l</var> this reads 2<var>v</var><sub><var>l</var></sub> ≥ <var>r</var> = 2<var>j</var>, since otherwise <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>d</var>) = 2<var>v</var><sub><var>l</var></sub> &lt; <var>r</var> would contradict <var>r</var> being the minimum; for capped <var>l</var> it holds because 2<var>v</var><sub><var>l</var></sub> ≥ 2<var>e</var> ≥ 2<var>j</var> + 2. Hence <var>v</var><sub><var>q</var><sub><var>l</var></sub></sub>(<var>z</var>) ≥ <var>j</var> for every <var>l</var>, and by square-freeness <var>m</var><sup><var>j</var></sup> | <var>z</var>. Put <var>u</var> := <var>z</var>/<var>m</var><sup><var>j</var></sup> ∈ Z.</p>
+
+<p><span class="step">Step 4 (the leading digit is a nonzero square mod <var>m</var>).</span> From <var>d</var> = <var>z</var><sup>2</sup> + λ<var>m</var><sup>2<var>e</var></sup> = <var>m</var><sup>2<var>j</var></sup>(<var>u</var><sup>2</sup> + λ<var>m</var><sup>2<var>e</var>−2<var>j</var></sup>) we get</p>
+<div class="math"><span class="l"><var>d</var>/<var>m</var><sup>2<var>j</var></sup> ≡ <var>u</var><sup>2</sup> (mod <var>m</var><sup>2<var>e</var>−2<var>j</var></sup>),&nbsp;&nbsp;&nbsp;with 2<var>e</var> − 2<var>j</var> ≥ 2.</span></div>
+<p>Reducing modulo <var>m</var> and combining with Step 1: δ ≡ <var>u</var><sup>2</sup> (mod <var>m</var>) and δ ≠ 0, so <strong>δ ∈ <var>Q</var><sub><var>m</var></sub></strong>. Here <var>u</var> need not be a unit modulo <var>m</var>, so δ may be a non-unit square, zero in some CRT coordinates. This case occurs for genuine differences of the certificates below, which is why <var>Q</var><sub><var>m</var></sub> must be the full image of squaring.</p>
+
+<p><span class="step">Step 5 (rank drop).</span> The first differing position <var>r</var> = 2<var>j</var> is even, so <var>x</var><sub>2<var>j</var></sub>, <var>y</var><sub>2<var>j</var></sub> ∈ <var>S</var>, and δ ≡ <var>y</var><sub>2<var>j</var></sub> − <var>x</var><sub>2<var>j</var></sub> (mod <var>m</var>) with δ ∈ <var>Q</var><sub><var>m</var></sub> gives an arc <var>x</var><sub>2<var>j</var></sub> → <var>y</var><sub>2<var>j</var></sub>, hence <var>h</var>₀(<var>x</var><sub>2<var>j</var></sub>) &gt; <var>h</var>₀(<var>y</var><sub>2<var>j</var></sub>), a drop of at least 1. All even positions 2<var>j</var>′ &lt; 2<var>j</var> carry equal digits and contribute equally to <var>h</var>. Therefore</p>
+<div class="math">
+  <span class="l"><var>h</var>(<var>x</var>) − <var>h</var>(<var>y</var>) = [<var>h</var>₀(<var>x</var><sub>2<var>j</var></sub>) − <var>h</var>₀(<var>y</var><sub>2<var>j</var></sub>)]·<var>H</var>₀<sup><var>e</var>−1−<var>j</var></sup></span>
+  <span class="l i2">+ Σ<sub><var>j</var>′ &gt; <var>j</var></sub> [<var>h</var>₀(<var>x</var><sub>2<var>j</var>′</sub>) − <var>h</var>₀(<var>y</var><sub>2<var>j</var>′</sub>)]·<var>H</var>₀<sup><var>e</var>−1−<var>j</var>′</sup></span>
+  <span class="l i2">≥ <var>H</var>₀<sup><var>e</var>−1−<var>j</var></sup> − (<var>H</var>₀ − 1)·Σ<sub><var>j</var>′ &gt; <var>j</var></sub> <var>H</var>₀<sup><var>e</var>−1−<var>j</var>′</sup></span>
+  <span class="l i2">= <var>H</var>₀<sup><var>e</var>−1−<var>j</var></sup> − (<var>H</var>₀<sup><var>e</var>−1−<var>j</var></sup> − 1) = 1 &gt; 0.&nbsp;&nbsp;&nbsp;<span class="qed">∎</span></span>
+</div>
+</div>
+
+<div class="remark">
+<p><span class="label">Remark 1 (the unit-only variant is false).</span> Suppose the arc set were taken to be the unit squares mod <var>m</var> only. Let <var>m</var> = 15, whose unit squares are {1, 4}. Then <var>S</var> = {0, 1, 6} is acyclic for unit arcs — the only such arc is 0 → 1 — and <var>h</var>₀(0) = 1, <var>h</var>₀(1) = 0, <var>h</var>₀(6) = 1 is a valid ranking for that arc set. Lift with <var>e</var> = 1: <var>x</var> = 0 and <var>y</var> = 36 = 6 + 2·15 both lie in <var>C</var>, and <var>y</var> − <var>x</var> = 36 = 6<sup>2</sup> is a square modulo 225 with <var>v</var><sub>15</sub> = 0 and leading digit 6, a non-unit square mod 15 (the full square set mod 15 is {1, 4, 6, 9, 10}). But <var>h</var>(<var>x</var>) = 1 ≤ 1 = <var>h</var>(<var>y</var>), so the lifted ranking fails, and Lemma B applied to it would manufacture a false SDF set. The definition <var>Q</var><sub><var>m</var></sub> = image of squaring minus 0 is therefore a hypothesis of the lemma.</p>
+</div>
+
+<div class="remark">
+<p><span class="label">Remark 2 (what differs from the prime case).</span> Four points, and nothing else.</p>
+<p>(1) In Step 2, for prime <var>p</var> the capped case collapses, since a capped single coordinate forces <var>d</var> ≡ 0; for composite <var>m</var> a coordinate can hit the cap while the difference stays nonzero, so evenness must come from the minimum over uncapped coordinates.</p>
+<p>(2) In the prime case <var>p</var><sup><var>j</var></sup> | <var>z</var> is immediate from <var>v</var><sub><var>p</var></sub>(<var>d</var>) = 2<var>j</var> = 2·<var>v</var><sub><var>p</var></sub>(<var>z</var>); for composite <var>m</var> the divisibility must be assembled coordinate by coordinate, the capped coordinates included. Step 3 is the composite form of the "<var>n</var><sup>2<var>j</var></sup> | <var>z</var><sup>2</sup>, hence <var>n</var><sup><var>j</var></sup> | <var>z</var>" step inside Krachun's Lemma 4.</p>
+<p>(3) In Steps 4 and 5 the leading digit is automatically a unit square for prime <var>p</var>, and may be a non-unit square for composite <var>m</var>; transplanting the phrase "nonzero quadratic residue modulo <var>p</var>" verbatim would produce a false lemma.</p>
+<p>(4) Krachun extracts the order from his chain condition (2.1) — every forward difference along the chain a nonzero quadratic residue — together with −1 being a nonresidue mod <var>p</var>, which forces <var>b</var> &gt; <var>a</var>; here that is replaced by "acyclicity yields a ranking", so <var>p</var> ≡ 3 (mod 4) is not needed in any form, and the height <var>t</var><sup><var>e</var></sup> becomes <var>H</var>₀<sup><var>e</var></sup>.</p>
+<p>Everything else — the digit representation, the borrow-free leading digit, the lexicographic descent, the size count — is Krachun's mechanism verbatim.</p>
+</div>
+</section>
+
+<section aria-labelledby="h-lemB">
+<h2 id="h-lemB">Lemma B (= Krachun, Lemma 4) — used as published</h2>
+
+<div class="thm">
+  <p><span class="label">Statement.</span> Let <var>P</var> = <var>n</var><sup>2</sup> be a perfect square, <var>n</var> any positive integer, with no primality or square-freeness hypothesis, and let (<var>C</var>, <var>h</var>, <var>H</var>) be a ranked block on Z/<var>P</var>Z. Then for every <var>L</var> ≥ 1 there is a square-difference-free <var>A</var><sub><var>L</var></sub> ⊆ {1,…,(<var>PH</var>)<sup><var>L</var></sup>} with |<var>A</var><sub><var>L</var></sub>| = |<var>C</var>|<sup><var>L</var></sup>.</p>
+</div>
+
+<p><em>Mechanism, in one sentence:</em> base-<var>P</var> words (<var>x</var>₀,…,<var>x</var><sub><var>L</var>−1</sub>) ∈ <var>C</var><sup><var>L</var></sup> give <var>X</var> = Σ <var>x̄</var><sub><var>j</var></sub> <var>P</var><sup><var>j</var></sup>, where <var>x̄</var><sub><var>j</var></sub> ∈ {0,…,<var>P</var>−1} is the representative of <var>x</var><sub><var>j</var></sub>, with rank <var>h</var><sub><var>L</var></sub>(<var>X</var>) = Σ <var>h</var>(<var>x</var><sub><var>j</var></sub>) <var>H</var><sup><var>L</var>−1−<var>j</var></sup>, and <var>B</var><sub><var>L</var></sub> = {<var>X</var> + <var>P</var><sup><var>L</var></sup>·<var>h</var><sub><var>L</var></sub>(<var>X</var>)} works, because a positive square difference in <var>B</var><sub><var>L</var></sub> would force <var>h</var><sub><var>L</var></sub> not to decrease along its own reduction mod <var>P</var><sup><var>L</var></sup>, contradicting the strict decrease. For the proof see Krachun, Lemma 4. Our <var>P</var> = Π <var>m</var><sub><var>i</var></sub><sup>2<var>e</var><sub><var>i</var></sub></sup> = (Π <var>m</var><sub><var>i</var></sub><sup><var>e</var><sub><var>i</var></sub></sup>)<sup>2</sup> satisfies the hypothesis; nothing needs extending.</p>
+</section>
+
+<section aria-labelledby="h-lemC">
+<h2 id="h-lemC">Lemma C (= Krachun, Lemma 5) — used as published</h2>
+
+<div class="thm">
+  <p><span class="label">Statement.</span> For 1 ≤ <var>i</var> ≤ ℓ let <var>P</var><sub><var>i</var></sub> be pairwise coprime perfect squares and (<var>C</var><sub><var>i</var></sub>, <var>h</var><sub><var>i</var></sub>, <var>H</var><sub><var>i</var></sub>) ranked blocks on Z/<var>P</var><sub><var>i</var></sub>Z. Under the CRT identification, <var>C</var> = Π <var>C</var><sub><var>i</var></sub> ⊆ Z/<var>P</var>Z with <var>P</var> = Π <var>P</var><sub><var>i</var></sub> and <var>h</var>(<var>x</var><sub>1</sub>,…,<var>x</var><sub>ℓ</sub>) = Σ <var>h</var><sub><var>i</var></sub>(<var>x</var><sub><var>i</var></sub>) is a ranked block of height <var>H</var> = 1 + Σ (<var>H</var><sub><var>i</var></sub> − 1).</p>
+</div>
+
+<p><em>Mechanism, in one sentence:</em> the reduction of a square mod <var>P</var> is a square mod each <var>P</var><sub><var>i</var></sub>, possibly 0; a zero coordinate leaves its rank unchanged, a nonzero one drops it strictly, and at least one is nonzero. For the proof see Krachun, Lemma 5. The statement never mentions chains or primes, so it accepts arbitrary ranked blocks as given.</p>
+</section>
+
+<section aria-labelledby="h-pool">
+<h2 id="h-pool">The pool</h2>
+
+<p>Eleven blocks, all moduli pairwise coprime. Krachun's chain at <var>p</var> = 23 is omitted because 23 | 299.</p>
+
+<h3>Nine Paley chains (Krachun's chains); for these, (<var>m</var>, <var>t</var>, <var>H</var>₀) = (<var>p</var>, <var>t</var>, <var>t</var>)</h3>
+
+<div class="tablewrap">
+<table>
+  <caption>The nine Paley pairs used in the pool.</caption>
+  <thead>
+    <tr><th scope="col"><var>p</var></th><th scope="col">chain</th><th scope="col"><var>t</var></th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">3</th><td>(0, 1)</td><td>2</td></tr>
+    <tr><th scope="row">7</th><td>(0, 4, 1)</td><td>3</td></tr>
+    <tr><th scope="row">11</th><td>(0, 3, 1, 4)</td><td>4</td></tr>
+    <tr><th scope="row">19</th><td>(0, 5, 11, 9, 16)</td><td>5</td></tr>
+    <tr><th scope="row">31</th><td>(0, 25, 14, 1, 19, 8, 2)</td><td>7</td></tr>
+    <tr><th scope="row">43</th><td>(0, 31, 9, 23, 4, 40, 1)</td><td>7</td></tr>
+    <tr><th scope="row">59</th><td>(0, 49, 15, 7, 16, 19, 35, 36, 5)</td><td>9</td></tr>
+    <tr><th scope="row">71</th><td>(0, 8, 12, 18, 48, 27, 1, 37, 20)</td><td>9</td></tr>
+    <tr><th scope="row">103</th><td>(0, 79, 25, 58, 55, 81, 4, 1, 34, 83, 59)</td><td>11</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Krachun's tenth chain, 23: (0, 18, 1, 3, 4) with <var>t</var> = 5, is used here only to restate his constant α<sub>★</sub>.</p>
+
+<h3>Composite block 1: (<var>m</var>, <var>t</var>, <var>H</var>₀) = (235, 17, 11), with 235 = 5·47 square-free</h3>
+
+<p>Support with its exhibited ranking:</p>
+
+<div class="tablewrap">
+<table>
+  <caption>Composite block 1: the 17-vertex support on Z/235Z and its exhibited ranking.</caption>
+  <thead>
+    <tr><th scope="col">vertex</th><th scope="col">rank</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">0</th><td>10</td></tr>
+    <tr><th scope="row">112</th><td>10</td></tr>
+    <tr><th scope="row">196</th><td>9</td></tr>
+    <tr><th scope="row">224</th><td>9</td></tr>
+    <tr><th scope="row">155</th><td>8</td></tr>
+    <tr><th scope="row">136</th><td>7</td></tr>
+    <tr><th scope="row">67</th><td>6</td></tr>
+    <tr><th scope="row">110</th><td>6</td></tr>
+    <tr><th scope="row">92</th><td>5</td></tr>
+    <tr><th scope="row">189</th><td>5</td></tr>
+    <tr><th scope="row">126</th><td>4</td></tr>
+    <tr><th scope="row">193</th><td>4</td></tr>
+    <tr><th scope="row">22</th><td>3</td></tr>
+    <tr><th scope="row">50</th><td>3</td></tr>
+    <tr><th scope="row">64</th><td>2</td></tr>
+    <tr><th scope="row">73</th><td>1</td></tr>
+    <tr><th scope="row">148</th><td>0</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Seventeen vertices, ranks 0…10, so height 11. Checking this is a square-DAG with this ranking is one pass over the 17·16 ordered pairs: for each pair test whether the difference lies in <var>Q</var><sub>235</sub>, and if so that the rank strictly drops.</p>
+
+<h3>Composite block 2: (<var>m</var>, <var>t</var>, <var>H</var>₀) = (299, 19, 12), with 299 = 13·23 square-free</h3>
+
+<p>Support:</p>
+
+<p class="data">7, 21, 25, 40, 46, 78, 83, 116, 153, 161, 165, 206, 207, 210, 212, 244, 264, 289, 292</p>
+
+<p>Nineteen vertices. The induced digraph under <var>Q</var><sub>299</sub> is acyclic, and its reversed longest-path rank has height 12; both are computed directly from the support in milliseconds.</p>
+
+<p>Both blocks are presented as lower-bound certificates only. The cited heights <var>H</var>₀ = 11 and 12 are the heights of these exhibited certificates and nothing more; no minimality, maximality, or census claim is made about them or about the pool.</p>
+</section>
+
+<section aria-labelledby="h-chain">
+<h2 id="h-chain">The exponent chain</h2>
+
+<p>Write <var>m</var><sub><var>i</var></sub>, <var>t</var><sub><var>i</var></sub>, <var>H</var><sub><var>i</var></sub> for the modulus, size, and height <var>H</var>₀ of pool block <var>i</var>; after Lemma A with multiplicity <var>e</var><sub><var>i</var></sub>, block <var>i</var> is a ranked block of height <var>H</var><sub><var>i</var></sub><sup><var>e</var><sub><var>i</var></sub></sup>, which is what Lemma C receives. Glue across the pool with Lemma C and feed the result to Lemma B at length <var>L</var>. Then</p>
+
+<div class="math"><span class="l"><var>P</var> = Π <var>m</var><sub><var>i</var></sub><sup>2<var>e</var><sub><var>i</var></sub></sup>,&nbsp;&nbsp;&nbsp;|<var>C</var>| = Π (<var>m</var><sub><var>i</var></sub> <var>t</var><sub><var>i</var></sub>)<sup><var>e</var><sub><var>i</var></sub></sup>,&nbsp;&nbsp;&nbsp;<var>H</var> = 1 + Σ (<var>H</var><sub><var>i</var></sub><sup><var>e</var><sub><var>i</var></sub></sup> − 1),</span></div>
+
+<p>and the SDF sets produced by Lemma B have exponent</p>
+
+<div class="math"><span class="l">α(<var>e</var>) = [Σ <var>e</var><sub><var>i</var></sub> log(<var>m</var><sub><var>i</var></sub> <var>t</var><sub><var>i</var></sub>)] / [2 Σ <var>e</var><sub><var>i</var></sub> log <var>m</var><sub><var>i</var></sub> + log(1 + Σ (<var>H</var><sub><var>i</var></sub><sup><var>e</var><sub><var>i</var></sub></sup> − 1))].</span></div>
+
+<p><strong>The limit.</strong> Every pool block has <var>H</var><sub><var>i</var></sub> ≥ 2. Allocate <var>e</var><sub><var>i</var></sub>(<var>U</var>) := ⌊<var>U</var> / log <var>H</var><sub><var>i</var></sub>⌋ for a real parameter <var>U</var> ≥ max<sub><var>i</var></sub> log <var>H</var><sub><var>i</var></sub>, so that every <var>e</var><sub><var>i</var></sub>(<var>U</var>) ≥ 1 and Lemma A applies. Then <var>e</var><sub><var>i</var></sub>(<var>U</var>)·log <var>H</var><sub><var>i</var></sub> ∈ (<var>U</var> − log <var>H</var><sub><var>i</var></sub>, <var>U</var>], so <var>e</var><sub><var>i</var></sub>(<var>U</var>) = <var>U</var>/log <var>H</var><sub><var>i</var></sub> + O(1), and</p>
+
+<div class="math"><span class="l">max<sub><var>i</var></sub> <var>H</var><sub><var>i</var></sub><sup><var>e</var><sub><var>i</var></sub></sup> ≤ 1 + Σ<sub><var>i</var></sub> (<var>H</var><sub><var>i</var></sub><sup><var>e</var><sub><var>i</var></sub></sup> − 1) ≤ ℓ · max<sub><var>i</var></sub> <var>H</var><sub><var>i</var></sub><sup><var>e</var><sub><var>i</var></sub></sup>&nbsp;&nbsp;&nbsp;⟹&nbsp;&nbsp;&nbsp;log <var>H</var> = <var>U</var> + O(1),</span></div>
+
+<p>with implied constants depending only on the pool. Substituting,</p>
+
+<div class="math">
+  <span class="l">numerator&nbsp;&nbsp;&nbsp;= <var>U</var> · Σ<sub><var>i</var></sub> log(<var>m</var><sub><var>i</var></sub> <var>t</var><sub><var>i</var></sub>)/log <var>H</var><sub><var>i</var></sub> + O(1),</span>
+  <span class="l">denominator = <var>U</var> · (1 + 2 Σ<sub><var>i</var></sub> log <var>m</var><sub><var>i</var></sub>/log <var>H</var><sub><var>i</var></sub>) + O(1),</span>
+</div>
+
+<p>both Θ(<var>U</var>), so α(<var>e</var>(<var>U</var>)) → α<sub>∞</sub> as <var>U</var> → ∞, where</p>
+
+<div class="math"><span class="l">α<sub>∞</sub> = [Σ<sub><var>i</var></sub> log(<var>m</var><sub><var>i</var></sub> <var>t</var><sub><var>i</var></sub>)/log <var>H</var><sub><var>i</var></sub>] / [1 + 2 Σ<sub><var>i</var></sub> log <var>m</var><sub><var>i</var></sub>/log <var>H</var><sub><var>i</var></sub>].</span></div>
+
+<p>This is Krachun's Theorem 1 computation with log <var>t</var><sub><var>i</var></sub> replaced by log <var>H</var><sub><var>i</var></sub>; for a Paley chain <var>H</var> = <var>t</var>, so his formula is the special case.</p>
+
+<p><strong>Passage to all <var>N</var>.</strong> Fix ρ &lt; α<sub>∞</sub> and choose <var>U</var> with α := α(<var>e</var>(<var>U</var>)) &gt; ρ. Write <var>P</var> = <var>P</var>(<var>U</var>), <var>H</var> = <var>H</var>(<var>U</var>), <var>N</var><sub><var>L</var></sub> := (<var>PH</var>)<sup><var>L</var></sup>, so Lemma B gives SDF <var>A</var><sub><var>L</var></sub> ⊆ {1,…,<var>N</var><sub><var>L</var></sub>} with |<var>A</var><sub><var>L</var></sub>| = |<var>C</var>|<sup><var>L</var></sup> = <var>N</var><sub><var>L</var></sub><sup>α</sup>. For arbitrary <var>N</var> ≥ <var>PH</var> set <var>L</var> := ⌊log <var>N</var> / log(<var>PH</var>)⌋ ≥ 1. Then <var>N</var><sub><var>L</var></sub> ≤ <var>N</var> and <var>A</var><sub><var>L</var></sub> ⊆ {1,…,<var>N</var>} is square-difference-free, so</p>
+
+<div class="math"><span class="l"><var>D</var>(<var>N</var>) ≥ |<var>A</var><sub><var>L</var></sub>| = <var>N</var><sub><var>L</var></sub><sup>α</sup> &gt; (<var>N</var>/(<var>PH</var>))<sup>α</sup> = (<var>PH</var>)<sup>−α</sup> · <var>N</var><sup>α</sup>,</span></div>
+
+<p>whence log <var>D</var>(<var>N</var>)/log <var>N</var> ≥ α − α·log(<var>PH</var>)/log <var>N</var> → α &gt; ρ, so liminf<sub><var>N</var>→∞</sub> log <var>D</var>(<var>N</var>)/log <var>N</var> ≥ ρ. Letting ρ ↗ α<sub>∞</sub> proves the Theorem. <span class="qed">∎</span></p>
+
+<p><strong>Finite-stage certifiability.</strong> No limit is needed for an unconditional bound. Each finite <var>U</var> certifies its own exponent with an explicit constant: with <var>P</var> = <var>P</var>(<var>U</var>) and <var>H</var> = <var>H</var>(<var>U</var>),</p>
+
+<div class="math"><span class="l"><var>D</var>(<var>N</var>) ≥ (<var>PH</var>)<sup>−α(<var>e</var>(<var>U</var>))</sup> · <var>N</var><sup>α(<var>e</var>(<var>U</var>))</sup>&nbsp;&nbsp;&nbsp;for all <var>N</var> ≥ <var>PH</var>.</span></div>
+
+<p>The limit is approached from below through these finite constructions: α(<var>e</var>(<var>U</var>)) = 0.744217 at <var>U</var> = 5, 0.751542 at <var>U</var> = 20, 0.753210 at <var>U</var> = 80, 0.753616 at <var>U</var> = 320, gap of order 1/<var>U</var>.</p>
+</section>
+
+<section aria-labelledby="h-value">
+<h2 id="h-value">The value</h2>
+
+<p>Evaluating α<sub>∞</sub> on the eleven-block pool:</p>
+
+<div class="math"><span class="l">α<sub>∞</sub> = 0.753741541837329405…&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nearest double 0.7537415418373294</span></div>
+
+<p>For comparison, the same closed form over Krachun's ten Paley pairs (his (1.1)):</p>
+
+<div class="math"><span class="l">α<sub>★</sub> = 0.752796455874514…</span></div>
+</section>
+
+<section aria-labelledby="h-verif">
+<h2 id="h-verif">Verification</h2>
+
+<p>Three independent routes, in ascending effort. None requires trusting the other two.</p>
+
+<ol class="routes">
+  <li><strong>Run the script.</strong> <code>python3 verify.py</code> — standard library only, well under a minute, all data inlined in that one file, exit status nonzero on any failure. It rebuilds <var>Q</var><sub>235</sub> and <var>Q</var><sub>299</sub> from the definition and checks their sizes; checks both certificates for size, acyclicity, and longest-path height, validating the exhibited ranking for 235 and the computed longest-path ranking for 299; checks all ten Paley chains for primality, <var>p</var> ≡ 3 (mod 4), distinctness, and every forward difference a nonzero quadratic residue; and recomputes α<sub>∞</sub> and α<sub>★</sub> in high-precision decimal. The flag <code>--lift-demo</code> additionally builds the <var>e</var> = 1, <var>L</var> = 1 lifted integer set for the 235 block and brute-checks square-difference-freeness — an empirical witness of Lemmas A and B at the smallest scale, a demonstration, not a proof.</li>
+  <li><strong>Read the mathematics.</strong> One page: Lemma A's proof above, plus Krachun's published Lemmas 4 and 5, used here without modification.</li>
+  <li><strong>Reimplement from scratch.</strong> Everything needed is stated above: the definition of <var>Q</var><sub><var>m</var></sub>, the two certificates with their supports (and the exhibited ranking for 235), the nine chains, the allocation <var>e</var><sub><var>i</var></sub>(<var>U</var>) = ⌊<var>U</var>/log <var>H</var><sub><var>i</var></sub>⌋, and the closed form. verify.py is not an input to the mathematics; it only re-checks what is stated above.</li>
+</ol>
+</section>
+
+<section aria-labelledby="h-scope">
+<h2 id="h-scope">Scope</h2>
+
+<p>No optimality is claimed — not of the two certificates, not of their heights, not of the pool, and not of the method. The blocks are lower-bound certificates: exhibited objects that a reader checks in milliseconds. Krachun's §3 discussion of the limit of the approach is heuristic, restricted to prime moduli, and stated by its author to be without precise proofs, so it bears on none of the above.</p>
+</section>
+
+<section aria-labelledby="h-refs">
+<h2 id="h-refs">References</h2>
+
+<ul class="refs">
+  <li>H. Furstenberg, <cite>Ergodic behavior of diagonal measures and a theorem of Szemerédi on arithmetic progressions</cite>, J. Analyse Math. <strong>31</strong> (1977), 204–256.</li>
+  <li>A. Sárközy, <cite>On difference sets of sequences of integers I</cite>, Acta Math. Acad. Sci. Hungar. <strong>31</strong> (1978), 125–149.</li>
+  <li>I. Z. Ruzsa, <cite>Difference sets without squares</cite>, Period. Math. Hungar. <strong>15</strong> (1984), 205–209.</li>
+  <li>R. Beigel, W. Gasarch, <cite>Square-difference-free sets of size Ω(<var>n</var><sup>0.7334</sup>)</cite>, arXiv:0804.4892 (2008).</li>
+  <li>M. Lewko, <cite>An improved lower bound related to the Furstenberg–Sárközy theorem</cite>, Electron. J. Combin. <strong>22</strong> (2015), #P1.32.</li>
+  <li>B. Green, M. Sawhney, <cite>New bounds for the Furstenberg–Sárközy theorem</cite>, arXiv:2411.17448 (2024).</li>
+  <li>Z. Hunter, C. Pohoata, J. Verstraëte, S. Zhang, <cite>Large point-line matchings and small Nikodym sets</cite>, arXiv:2601.19879 (2026).</li>
+  <li>D. Krachun, <cite>Square-difference-free sets beyond the three-quarter barrier</cite>, arXiv:2608.01325 (2026).</li>
+</ul>
+</section>
+
+</main>
+
+<footer>
+<h2 id="h-prov">Provenance</h2>
+<p>AI-generated results with human managing the workflow. Final report generated by Claude Code (Fable 5) with contributions from Codex (GPT 5.6 Sol) and Grok Build (Grok 4.6).</p>
+<p>See <a href="DISCLOSURE.md">DISCLOSURE.md</a>. Released under the MIT License; see <a href="LICENSE">LICENSE</a>. Source and verification script: <a href="https://github.com/JD-Jones-ASES/fs-lower-bound">the repository</a>.</p>
+</footer>
+
+</body>
+</html>
