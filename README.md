@@ -367,7 +367,7 @@ Three independent routes, in ascending effort. None requires trusting the other 
    lifted integer set for the 235 block and brute-checks square-difference-freeness — an
    empirical witness of Lemmas A and B at the smallest scale, a demonstration, not a proof.
 
-2. **Read the mathematics.** One page: Lemma A's proof above, plus Krachun's published
+2. **Check the proof.** It is one page: Lemma A's proof above, plus Krachun's published
    Lemmas 4 and 5, used here without modification.
 
 3. **Reimplement from scratch.** Everything needed is stated above: the definition of
