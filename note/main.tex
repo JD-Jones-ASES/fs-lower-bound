@@ -524,9 +524,11 @@ Lemmas~B and~C reproved rather than cited, the exponent computation, and
 Theorem~\ref{thm:main} in both liminf and pointwise $\varepsilon$-form,
 together with the numerical statement $0.7537 < \alpha_\infty$, certified by
 kernel-checked integer comparisons with no floating-point or transcendental
-arithmetic anywhere. The development comprises $126$ declarations, every one
-depending only on Lean's three standard axioms (\texttt{propext},
-\texttt{Classical.choice}, \texttt{Quot.sound}). A source snapshot of the
+arithmetic anywhere. A build-time audit runs \texttt{Lean.collectAxioms}
+over the $126$ declarations of its audit list --- a set whose transitive
+closure contains every public declaration of the development --- and fails
+the build if any of them depends on an axiom outside Lean's three standard
+axioms (\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}). A source snapshot of the
 formalization accompanies this submission as ancillary files
 (\texttt{anc/lean/}), with the toolchain and dependency versions pinned by
 \texttt{lean-toolchain} and \texttt{lake-manifest.json}, so the kernel check

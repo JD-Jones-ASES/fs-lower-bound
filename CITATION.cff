@@ -5,6 +5,8 @@ version: 1.0.0
 date-released: 2026-08-22
 url: "https://github.com/JD-Jones-ASES/fs-lower-bound"
 authors:
+  - family-names: "Jones"
+    given-names: "JD"
   - name: "Claude Code (Fable 5, Anthropic)"
   - name: "Codex (GPT 5.6 Sol, OpenAI)"
   - name: "Grok Build (Grok 4.6, xAI)"
