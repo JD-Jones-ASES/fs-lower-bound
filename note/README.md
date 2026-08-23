@@ -23,25 +23,23 @@ latexmk -pdf main.tex
 
 ## Package for arXiv
 
-Zip the *contents* of this folder (not the folder itself), excluding this
-README and build artifacts, so `main.tex` sits at the archive root:
-
-```
-Compress-Archive -Path main.tex, anc -DestinationPath fs-lower-bound-arxiv.zip -Force
-```
+Run `make-zip.ps1` (default output `C:\temp\fs-lower-bound-arxiv.zip`). It
+zips `main.tex` at the archive root plus `anc/`, writing forward-slash
+entry names — do not use `Compress-Archive`, whose backslash entries can
+extract wrongly on arXiv's Linux side.
 
 ## Submission checklist
 
-1. Both repos (`fs-lower-bound`, `fs-lower-bound-lean`) must be public before
-   the paper announces — it links to them.
+1. ~~Both repos must be public before the paper announces~~ — done
+   2026-08-23, both confirmed publicly reachable.
 2. Author name: **JD Jones** in the paper and in the submission's Authors
    metadata field, matching the public identity (the Algebra book, LICENSE,
    the GitHub org). The account name (Joshua Jones) governs the account, not
    the byline; JD is the short form of the legal name, not a pseudonym.
 3. Category: `math.NT` primary, cross-list `math.CO` (matches Green–Sawhney,
    the problem's home literature, and the paper's MSC 11B30).
-4. License: chosen at submission. arXiv's non-exclusive license keeps journal
-   options open; CC BY-SA 4.0 is the house default.
+4. License: JD ruled **CC BY 4.0** (2026-08-23) — pick it on the arXiv
+   license menu at submission.
 5. A new arXiv account may need endorsement for the primary category
    (`math.NT`) — arXiv says so at submission time if it applies.
 6. After the arXiv id exists: add a `preferred-citation` block to
