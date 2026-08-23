@@ -36,11 +36,13 @@ extract wrongly on arXiv's Linux side.
    metadata field, matching the public identity (the Algebra book, LICENSE,
    the GitHub org). The account name (Joshua Jones) governs the account, not
    the byline; JD is the short form of the legal name, not a pseudonym.
-3. Category: `math.NT` primary, cross-list `math.CO` (matches Green–Sawhney,
-   the problem's home literature, and the paper's MSC 11B30).
+3. Category: **`math.CO` primary, cross-list `math.NT`** (JD's ruling,
+   2026-08-23: Krachun's paper sits in math.CO, and the endorsement path
+   runs through math.CO — Gasarch endorses there).
 4. License: JD ruled **CC BY 4.0** (2026-08-23) — pick it on the arXiv
    license menu at submission.
-5. A new arXiv account may need endorsement for the primary category
-   (`math.NT`) — arXiv says so at submission time if it applies.
+5. Endorsement is for the primary category (`math.CO`); JD holds an
+   endorsement code and is arranging it (Gasarch — reference [1] of the
+   paper — is an eligible endorser).
 6. After the arXiv id exists: add a `preferred-citation` block to
    `CITATION.cff` and link the abstract page from the root README.
