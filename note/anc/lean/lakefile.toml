@@ -1,0 +1,25 @@
+name = "FsLowerBound"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["FsLowerBound", "Test"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "FsLowerBound"
+
+# The build-time axiom audit (`Test/AxiomAudit.lean`). It is a default target, so a plain
+# `lake build` runs it. `roots` names the module directly: there is no `Test.lean`, and a
+# library whose root module is missing fails Lake's import check.
+[[lean_lib]]
+name = "Test"
+roots = ["Test.AxiomAudit"]

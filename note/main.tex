@@ -1,3 +1,4 @@
+\pdfoutput=1
 \documentclass[11pt]{amsart}
 
 \usepackage{amsmath,amssymb,amsthm}
@@ -21,8 +22,7 @@
 \title{An improved lower bound for the Furstenberg--S\'ark\"ozy problem}
 
 \author{JD Jones}
-% TODO(JD): fill in before submission, or delete.
-% \email{...}
+\email{jjones@all-saints.org}
 
 \subjclass[2020]{11B30 (Primary); 11B75, 05C70 (Secondary)}
 \keywords{Furstenberg--S\'ark\"ozy theorem, square-difference-free sets,
@@ -526,9 +526,13 @@ together with the numerical statement $0.7537 < \alpha_\infty$, certified by
 kernel-checked integer comparisons with no floating-point or transcendental
 arithmetic anywhere. The development comprises $126$ declarations, every one
 depending only on Lean's three standard axioms (\texttt{propext},
-\texttt{Classical.choice}, \texttt{Quot.sound}). The formalization is at
-\url{https://github.com/JD-Jones-ASES/fs-lower-bound-lean}; the note's
-repository, including the verification script, is at
+\texttt{Classical.choice}, \texttt{Quot.sound}). A source snapshot of the
+formalization accompanies this submission as ancillary files
+(\texttt{anc/lean/}), with the toolchain and dependency versions pinned by
+\texttt{lean-toolchain} and \texttt{lake-manifest.json}, so the kernel check
+can be reproduced against the exact versions used. The formalization is
+maintained at \url{https://github.com/JD-Jones-ASES/fs-lower-bound-lean};
+the note's repository, including the verification script, is at
 \url{https://github.com/JD-Jones-ASES/fs-lower-bound}.
 
 \section*{Provenance}
