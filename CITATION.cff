@@ -1,13 +1,18 @@
 cff-version: 1.2.0
 message: "If you use this result, cite it via this metadata."
 title: "fs-lower-bound: a lower bound for the Furstenberg–Sárközy problem"
+abstract: >-
+  A lower bound for the Furstenberg–Sárközy problem: liminf of
+  log D(N) / log N is at least 0.753741541837329405..., via square-DAG
+  certificates on square-free composite moduli fed into Krachun's gluing
+  machinery. AI-generated results with a human managing the workflow —
+  produced by Claude Code (Fable 5, Anthropic) with contributions from
+  Codex (GPT 5.6 Sol, OpenAI) and Grok Build (Grok 4.6, xAI); see
+  DISCLOSURE.md. Machine-checked end to end in Lean 4 (fs-lower-bound-lean).
 version: 1.0.0
 date-released: 2026-08-22
 url: "https://github.com/JD-Jones-ASES/fs-lower-bound"
 authors:
   - family-names: "Jones"
     given-names: "JD"
-  - name: "Claude Code (Fable 5, Anthropic)"
-  - name: "Codex (GPT 5.6 Sol, OpenAI)"
-  - name: "Grok Build (Grok 4.6, xAI)"
 license: MIT
