@@ -514,6 +514,8 @@ footer {
   <li><strong>Check the proof.</strong> It is one page: Lemma A's proof above, plus Krachun's published Lemmas 4 and 5, used here without modification.</li>
   <li><strong>Reimplement from scratch.</strong> Everything needed is stated above: the definition of <var>Q</var><sub><var>m</var></sub>, the two certificates with their supports (and the exhibited ranking for 235), the nine chains, the allocation <var>e</var><sub><var>i</var></sub>(<var>U</var>) = ⌊<var>U</var>/log <var>H</var><sub><var>i</var></sub>⌋, and the closed form. verify.py is not an input to the mathematics; it only re-checks what is stated above.</li>
 </ol>
+
+<p>A fourth route requires the most machinery and the least trust. The full chain — the definitions above, Lemma A, Krachun's Lemmas 4 and 5 reproved rather than cited, the exponent computation, and the Theorem's liminf statement — is formalized in Lean 4 with Mathlib: <a href="https://github.com/JD-Jones-ASES/fs-lower-bound-lean">fs-lower-bound-lean</a>. Every theorem there rests on Lean's three standard axioms (propext, Classical.choice, Quot.sound), and the numeric headline 0.7537 &lt; α<sub>∞</sub> is certified by kernel-checked integer comparisons, with no floating-point or transcendental arithmetic anywhere.</p>
 </section>
 
 <section aria-labelledby="h-scope">

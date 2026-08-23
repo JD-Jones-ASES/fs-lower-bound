@@ -376,6 +376,14 @@ Three independent routes, in ascending effort. None requires trusting the other 
    allocation e_i(U) = ⌊U/log H_i⌋, and the closed form. verify.py is not an input to the
    mathematics; it only re-checks what is stated above.
 
+A fourth route requires the most machinery and the least trust. The full chain — the
+definitions above, Lemma A, Krachun's Lemmas 4 and 5 reproved rather than cited, the
+exponent computation, and the Theorem's liminf statement — is formalized in Lean 4 with
+Mathlib: [fs-lower-bound-lean](https://github.com/JD-Jones-ASES/fs-lower-bound-lean).
+Every theorem there rests on Lean's three standard axioms (propext, Classical.choice,
+Quot.sound), and the numeric headline 0.7537 < α∞ is certified by kernel-checked integer
+comparisons, with no floating-point or transcendental arithmetic anywhere.
+
 ## Scope
 
 No optimality is claimed — not of the two certificates, not of their heights, not of the
