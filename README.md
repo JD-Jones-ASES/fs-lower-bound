@@ -418,3 +418,6 @@ Code (Fable 5) with contributions from Codex (GPT 5.6 Sol) and Grok Build (Grok 
 
 See [DISCLOSURE.md](DISCLOSURE.md). Released under the MIT License; see
 [LICENSE](LICENSE).
+
+A LaTeX version of this note, prepared for arXiv submission, is in
+[note/](note/).
