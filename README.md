@@ -1,5 +1,13 @@
 # A lower bound for the Furstenberg–Sárközy problem
 
+> **Newer work (19 September 2026).** Eric Naslund has since proved D(N) ≥ N^(0.75806746 − o(1)), by an
+> interval-moment criterion over ordered digit intervals, composite digit codes and a 2-adic recursion, with a
+> Lean 4 formalization registered as Palomar entry
+> [PALOMAR-2026-09-19-000006](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-19-000006&version=1).
+> For the best known value, its papers and its certificates, go to his repository:
+> [enaslund/sarkozy-lower-bound-0.758](https://github.com/enaslund/sarkozy-lower-bound-0.758).
+> The result below stands as stated and remains the source for the 0.7537 value and Lemma A.
+
 Let D(N) be the largest size of a subset of {1,…,N} no two of whose elements differ by a
 nonzero perfect square. This note proves
 
@@ -16,7 +24,7 @@ Equivalently, in pointwise form: for every ε > 0 there is an N₀(ε) with
 D(N) ≥ N^(α∞−ε) for all N ≥ N₀(ε). The statement is a liminf: the argument supplies no
 constant c with D(N) ≥ c·N^(α∞) for all N, and no such claim is made here.
 
-The previous record is Krachun's α★ = 0.752796455874514… (arXiv:2608.01325), the first
+The previous best value was Krachun's α★ = 0.752796455874514… (arXiv:2608.01325), the first
 bound past 3/4. Only one lemma is new: the lift of a
 square-DAG on a square-free composite modulus (Lemma A). Krachun's Lemmas 4 and 5 are
 used exactly as published.
@@ -35,9 +43,10 @@ black box in A. Prime q only; the statement is not made for prime powers.
 | 2008, 2015 | Beigel–Gasarch; Lewko (independently) | 0.733412 |
 | 2026 | Krachun | 0.752796… |
 | 2026 | this repository | 0.753741… |
+| 2026 | Naslund | 0.758067… |
 
 The classical constructions are the height-1 case — a support with no square difference at
-all, no ranks, used as alternating digits — with exponent ½(1 + log t / log m). The record
+all, no ranks, used as alternating digits — with exponent ½(1 + log t / log m). The best value
 for that quantity is ½(1 + log 12 / log 205) = 0.733412, from m = 205, t = 12. For prime m
 the height-1 exponent never exceeds 3/4: a square-difference-free support mod p is an
 independent set in the Paley graph, of size at most √p when p ≡ 1 (mod 4), and is a single

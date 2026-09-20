@@ -224,6 +224,10 @@ footer {
 
 <h1>A lower bound for the Furstenberg–Sárközy problem</h1>
 
+<div class="remark">
+  <p><span class="label">Newer work (19 September 2026).</span> Eric Naslund has since proved <var>D</var>(<var>N</var>) ≥ <var>N</var><sup>0.75806746 − o(1)</sup>, by an interval-moment criterion over ordered digit intervals, composite digit codes and a 2-adic recursion, with a Lean 4 formalization registered as Palomar entry <a href="https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-19-000006&amp;version=1">PALOMAR-2026-09-19-000006</a>. For the best known value, its papers and its certificates, go to his repository: <a href="https://github.com/enaslund/sarkozy-lower-bound-0.758">enaslund/sarkozy-lower-bound-0.758</a>. The result below stands as stated and remains the source for the 0.7537 value and Lemma A.</p>
+</div>
+
 <p class="lead">Let <var>D</var>(<var>N</var>) be the largest size of a subset of {1,…,<var>N</var>} no two of whose elements differ by a nonzero perfect square. This note proves</p>
 
 <div class="thm">
@@ -234,7 +238,7 @@ footer {
 
 <p>Equivalently, in pointwise form: for every ε &gt; 0 there is an <var>N</var><sub>0</sub>(ε) with <var>D</var>(<var>N</var>) ≥ <var>N</var><sup>α<sub>∞</sub>−ε</sup> for all <var>N</var> ≥ <var>N</var><sub>0</sub>(ε). The statement is a liminf: the argument supplies no constant <var>c</var> with <var>D</var>(<var>N</var>) ≥ <var>c</var>·<var>N</var><sup>α<sub>∞</sub></sup> for all <var>N</var>, and no such claim is made here.</p>
 
-<p>The previous record is Krachun's α<sub>★</sub> = 0.752796455874514… (arXiv:2608.01325), the first bound past 3/4. Only one lemma is new: the lift of a square-DAG on a square-free composite modulus (Lemma A). Krachun's Lemmas 4 and 5 are used exactly as published.</p>
+<p>The previous best value was Krachun's α<sub>★</sub> = 0.752796455874514… (arXiv:2608.01325), the first bound past 3/4. Only one lemma is new: the lift of a square-DAG on a square-free composite modulus (Lemma A). Krachun's Lemmas 4 and 5 are used exactly as published.</p>
 
 <div class="thm">
   <p><span class="label">Corollary.</span> For prime <var>q</var>, let IM(2,<var>q</var>) be the largest induced matching in the point–line incidence graph of <var>F</var><sub><var>q</var></sub><sup>2</sup>. Then for every ε &gt; 0, IM(2,<var>q</var>) ≫<sub>ε</sub> <var>q</var><sup>1/2 + α<sub>∞</sub> − ε</sup>. This follows from Hunter–Pohoata–Verstraëte–Zhang, Prop. 2.3: a square-difference-free <var>A</var> ⊆ {1,…,⌊<var>q</var>/10⌋} yields an induced point–line matching in <var>F</var><sub><var>q</var></sub><sup>2</sup> of size Ω(√<var>q</var>·|<var>A</var>|); the implication is a black box in <var>A</var>. Prime <var>q</var> only; the statement is not made for prime powers.</p>
@@ -254,11 +258,12 @@ footer {
     <tr><th scope="row">2008, 2015</th><td>Beigel–Gasarch; Lewko (independently)</td><td>0.733412</td></tr>
     <tr><th scope="row">2026</th><td>Krachun</td><td>0.752796…</td></tr>
     <tr><th scope="row">2026</th><td>this repository</td><td>0.753741…</td></tr>
+    <tr><th scope="row">2026</th><td>Naslund</td><td>0.758067…</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>The classical constructions are the height-1 case — a support with no square difference at all, no ranks, used as alternating digits — with exponent ½(1 + log <var>t</var> / log <var>m</var>). The record for that quantity is ½(1 + log 12 / log 205) = 0.733412, from <var>m</var> = 205, <var>t</var> = 12. For prime <var>m</var> the height-1 exponent never exceeds 3/4: a square-difference-free support mod <var>p</var> is an independent set in the Paley graph, of size at most √<var>p</var> when <var>p</var> ≡ 1 (mod 4), and is a single point when <var>p</var> ≡ 3 (mod 4) or <var>p</var> = 2. Krachun crossed 3/4 by making height, rather than width, the quantity that pays for itself in the CRT glue. This note keeps his glue and widens the supply of blocks: square-DAGs on square-free composite moduli, where height can be strictly smaller than width (11 &lt; 17 and 12 &lt; 19 for the two certificates below).</p>
+<p>The classical constructions are the height-1 case — a support with no square difference at all, no ranks, used as alternating digits — with exponent ½(1 + log <var>t</var> / log <var>m</var>). The best value for that quantity is ½(1 + log 12 / log 205) = 0.733412, from <var>m</var> = 205, <var>t</var> = 12. For prime <var>m</var> the height-1 exponent never exceeds 3/4: a square-difference-free support mod <var>p</var> is an independent set in the Paley graph, of size at most √<var>p</var> when <var>p</var> ≡ 1 (mod 4), and is a single point when <var>p</var> ≡ 3 (mod 4) or <var>p</var> = 2. Krachun crossed 3/4 by making height, rather than width, the quantity that pays for itself in the CRT glue. This note keeps his glue and widens the supply of blocks: square-DAGs on square-free composite moduli, where height can be strictly smaller than width (11 &lt; 17 and 12 &lt; 19 for the two certificates below).</p>
 
 <p>For the size of the remaining gap, the best upper bound is Green–Sawhney, <var>D</var>(<var>N</var>) ≪ <var>N</var>·<var>e</var><sup>−<var>c</var>√(log <var>N</var>)</sup>.</p>
 </section>
